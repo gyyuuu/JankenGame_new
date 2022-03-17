@@ -1,0 +1,32 @@
+@startuml
+
+class JankenGame {
+    + StartGame()
+    + EndGame()
+}
+
+abstract class Participant {
+    - mWinCount: int8_t
+    - mHand: int8_t
+    - mplayerType: std::string
+    + void Janken() virtual
+}
+
+class Player {
+    +void Janken()
+}
+
+class Computer {
+    +void Janken()
+}
+
+Participant <|- Computer
+Participant <|- Player
+
+class Referee {
+    - mGameCount: int8_t
+    + Judge()
+    + FinalJudge()
+}
+
+@enduml

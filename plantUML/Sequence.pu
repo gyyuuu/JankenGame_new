@@ -1,0 +1,32 @@
+@startuml
+
+actor User
+participant Janken
+participant Referee
+participant Player
+participant Computer
+
+User -> Janken: StartGame()
+
+activate Janken
+loop MaxGameCount
+    activate Referee
+    activate Player
+    activate Computer
+    alt gameCount < MaxGameCount 
+        Janken -> Player : Janken()
+        Janken -> Computer : Janken()
+        Janken -> Referee : Judge()
+    else gameCount = MaxGameCount
+        Referee -> Referee: FinalJudge()
+        Referee -> Janken: InformFinishGameCount()
+        deactivate Referee
+        deactivate Player
+        deactivate Computer
+    end
+end
+
+Janken -> User: EndGame()
+deactivate Janken
+
+@enduml

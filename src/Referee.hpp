@@ -1,21 +1,16 @@
-#ifndef REFEREE_H
-#define REFEREE_H
+#pragma once
+#include <iostream>
 
 class Referee {
-
 private:
-    int playerWinCount;
-    int computerWinCount;
-    const int ROCK = 1;
-    const int SCISSORS = 2;
-    const int PAPER = 3;
-
+    int8_t mPlayerWinCount;
+    int8_t mComputerWinCount;
+    const int8_t ROCK = 1;
+    const int8_t SCISSORS = 2;
+    const int8_t PAPER = 3;
 public:
     Referee();
-    void StartGame();
-    void Judge(int playerHand, int computerHand);
+    void Judge(int8_t playerHand, int8_t computerHand);
     void FinalJudge();
-    void EndGame();
 };
 
-#endif
