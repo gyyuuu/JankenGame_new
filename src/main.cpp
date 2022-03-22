@@ -2,6 +2,8 @@
 #include "JankenGame.hpp"
 
 int main() {
-    JankenGame jankengame;
-    jankengame.PlayGame();
+    Janken::JankenGame jankenGame;
+    jankenGame.Play();
+
+    return 0;
 }

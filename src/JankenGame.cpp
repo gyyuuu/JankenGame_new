@@ -1,24 +1,26 @@
 #include "JankenGame.hpp"
-#include "Participant.hpp"
-#include "Referee.hpp"
+#include "Player.hpp"
 
-void JankenGame::PlayGame() {
-    Referee referee;
-    Player player;
-    Computer computer;
-    int8_t playerHand = 0;
-    int8_t computerHand = 0;
-
-    std::cout << "Start Janken Game" << std::endl;
-    
-    for(int i = 0; mGameCount < MAXGAMECOUNT; i++) {
-        player.Janken();
-        computer.Janken();
-        player.ShowHand(playerHand);
-        computer.ShowHand(computerHand);
-        referee.Judge(playerHand, computerHand);
+namespace Janken {
+    JankenGame::JankenGame() : 
+        mGameCount(0){
     }
-    referee.FinalJudge();
+    JankenGame::~JankenGame() {
+    }
 
-    std::cout << "End Jyanken Game" << std::endl;
+    void JankenGame::Play() {
+        JankenPlayer::Player player;
+        const int32_t MAXGAMECOUNT= 3;
+
+        std::cout << "Start Janken Game" << std::endl;
+    
+        for(int i = 0; mGameCount < MAXGAMECOUNT; i++) {
+            player.Janken();
+            mGameCount++;
+        }
+   
+        player.DisplayFinalJudgeResult();
+
+        std::cout << "End Jyanken Game" << std::endl;
+    }
 }
